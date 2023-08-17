@@ -7,13 +7,14 @@ pipeline {
     stages {
         stage('BUILD APP'){
             steps{
-                sh '''
-                mvn clean package'
-		mv target/*.war target/maven.war'
-		archiveArtifacts artifacts: 'target/maven.war'
-                '''
+                sh 'mvn clean package'
             }
         }
+	stage('ARCHIVE'){
+	    steps {
+		archiveArtifacts artifacts: 'target/*.war'	
+		}
+	}
     }
     post {
          success {
