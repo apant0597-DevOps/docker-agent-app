@@ -3,7 +3,7 @@ currentBuild.displayName = "Docker-Agent-App#"+currentBuild.number
 pipeline {
     agent {
         docker { 
-		image 'maven' 
+		image 'maven:3-alpine' 
 		args '-u root'
 	}
     }
