@@ -17,7 +17,24 @@ pipeline {
 	    steps {
 		archiveArtifacts artifacts: 'target/*.war'	
 		}
-	}    
+	}
+	stage('DOCKER BUILD'){
+            steps {
+                sh '''		
+		docker build . -t apant0597/maven-webapp:docker-agent			
+		'''
+            }  
+        }
+	stage('DOCKER PUSH'){
+            steps {
+                withCredentials([string(credentialsId: 'docker-cred', variable: 'dockerhubcred')]) {
+                sh '''
+		docker login -u apant0597 -p ${dockerhubcred}
+		docker push apant0597/maven-webapp:docker-agent
+		'''
+            }
+	    }
+    }
     }
     post {
          success {
