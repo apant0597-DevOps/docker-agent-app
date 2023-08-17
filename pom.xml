@@ -107,7 +107,7 @@
 	</distributionManagement>
 	
 	<build>
-		<finalName>tesla</finalName>
+		<finalName>docker-agent-app</finalName>
 		
 		<plugins>
 			<plugin>
