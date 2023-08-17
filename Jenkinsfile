@@ -9,8 +9,8 @@ pipeline {
             steps{
                 sh '''
                 mvn clean package'
-		        mv target/*.war target/maven.war'
-		        archiveArtifacts artifacts: 'target/maven.war'
+		mv target/*.war target/maven.war'
+		archiveArtifacts artifacts: 'target/maven.war'
                 '''
             }
         }
