@@ -2,7 +2,10 @@
 currentBuild.displayName = "Docker-Agent-App#"+currentBuild.number
 pipeline {
     agent {
-        docker { image 'maven' }
+        docker { 
+		image 'maven' 
+		args '-u root'
+	}
     }
     stages {
         stage('BUILD APP'){
